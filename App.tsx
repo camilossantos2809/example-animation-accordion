@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useRef } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Transition, Transitioning } from "react-native-reanimated";
+import { LinearGradient } from "expo-linear-gradient";
 
 import data from "./data";
 
@@ -18,68 +19,83 @@ export default function App() {
   const ref = useRef();
 
   return (
-    <Transitioning.View
-      transition={transition}
-      ref={ref}
-      style={styles.container}
-    >
-      <StatusBar hidden />
-      {data.map(({ bg, color, category, subCategories }, index) => {
-        return (
-          <TouchableOpacity
-            key={category}
-            style={styles.cardContainer}
-            activeOpacity={0.8}
-            onPress={() => {
-              ref.current.animateNextTransition();
-              setCurrentIndex((prev) => (index === prev ? null : index));
-            }}
-          >
-            <View style={styles.row}>
-              {index !== currentIndex && (
-                <Text style={[styles.headingColored, { color: bg }]}>
-                  {category}
-                </Text>
-              )}
-              <View
-                style={[
-                  styles.cardColored,
-                  {
-                    backgroundColor: bg,
-                    width: index === currentIndex ? undefined : 30,
-                    flexGrow: index === currentIndex ? 1 : 0,
-                    borderTopLeftRadius: index === currentIndex ? 10 : 0,
-                    borderBottomLeftRadius: index === currentIndex ? 10 : 0,
-                    elevation: index === currentIndex ? 5 : 0,
-                  },
-                ]}
-              >
-                {index === currentIndex && (
-                  <Text style={[styles.heading, { color }]}>{category}</Text>
+    <LinearGradient style={styles.gradient} colors={["#19242f", "#0054cb"]}>
+      <Text style={styles.title}>RP Collect</Text>
+      <Text style={styles.subtitle}>Usuário: 100000 - Teste</Text>
+      <Transitioning.View
+        transition={transition}
+        ref={ref}
+        style={styles.container}
+      >
+        <StatusBar hidden />
+        {data.map(({ bg, color, category, subCategories }, index) => {
+          return (
+            <TouchableOpacity
+              key={category}
+              style={styles.cardContainer}
+              activeOpacity={0.9}
+              onPress={() => {
+                ref.current.animateNextTransition();
+                setCurrentIndex((prev) => (index === prev ? null : index));
+              }}
+            >
+              <View style={styles.row}>
+                {index !== currentIndex && (
+                  <Text
+                    numberOfLines={2}
+                    style={[styles.headingColored, { color: bg }]}
+                  >
+                    {category}
+                  </Text>
                 )}
-                {index === currentIndex && (
-                  <View style={styles.subCategoriesList}>
-                    {subCategories.map((subCategory) => (
-                      <Text key={subCategory} style={[styles.body, { color }]}>
-                        {subCategory}
-                      </Text>
-                    ))}
-                  </View>
-                )}
+                <View
+                  style={[
+                    styles.cardColored,
+                    {
+                      backgroundColor: bg,
+                      width: index === currentIndex ? undefined : 30,
+                      flexGrow: index === currentIndex ? 1 : 0,
+                      borderTopLeftRadius: index === currentIndex ? 10 : 0,
+                      borderBottomLeftRadius: index === currentIndex ? 10 : 0,
+                      elevation: index === currentIndex ? 5 : 0,
+                    },
+                  ]}
+                >
+                  {index === currentIndex && (
+                    <Text style={[styles.heading, { color }]}>{category}</Text>
+                  )}
+                  {index === currentIndex && (
+                    <View style={styles.subCategoriesList}>
+                      {subCategories.map((subCategory) => (
+                        <Text
+                          key={subCategory}
+                          style={[styles.body, { color }]}
+                        >
+                          {subCategory}
+                        </Text>
+                      ))}
+                    </View>
+                  )}
+                </View>
               </View>
-            </View>
-          </TouchableOpacity>
-        );
-      })}
-    </Transitioning.View>
+            </TouchableOpacity>
+          );
+        })}
+      </Transitioning.View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+    paddingLeft: 20,
+    justifyContent: "center",
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    marginTop: 100,
+    marginTop: 80,
+    marginBottom: 10,
     paddingLeft: 20,
     justifyContent: "center",
   },
@@ -89,28 +105,39 @@ const styles = StyleSheet.create({
   },
   cardColored: {
     alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 20,
+  },
+  title: {
+    color: "#f5f5eb",
+    fontSize: 30,
+    paddingTop: 20,
+    paddingLeft: 10,
+  },
+  subtitle: {
+    color: "#f5f5eb",
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
+    paddingLeft: 10,
   },
   heading: {
-    fontSize: 38,
+    fontSize: 24,
     fontWeight: "900",
     textTransform: "uppercase",
-    letterSpacing: -2,
+    letterSpacing: -1,
   },
   headingColored: {
     flexGrow: 1,
-    color: "#0053cb",
-    fontSize: 38,
+    fontSize: 24,
     fontWeight: "900",
     textTransform: "uppercase",
-    letterSpacing: -2,
+    letterSpacing: -1,
     textAlign: "right",
     paddingRight: 10,
   },
   body: {
-    fontSize: 20,
-    lineHeight: 20 * 1.5,
-    textAlign: "center",
+    fontSize: 18,
+    lineHeight: 18 * 1.5,
+    textAlign: "right",
   },
   subCategoriesList: {
     marginTop: 20,
