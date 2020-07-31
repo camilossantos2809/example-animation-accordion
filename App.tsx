@@ -121,14 +121,14 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 24,
-    fontWeight: "900",
+    fontWeight: "bold",
     textTransform: "uppercase",
     letterSpacing: -1,
   },
   headingColored: {
     flexGrow: 1,
     fontSize: 24,
-    fontWeight: "900",
+    fontWeight: "bold",
     textTransform: "uppercase",
     letterSpacing: -1,
     textAlign: "right",

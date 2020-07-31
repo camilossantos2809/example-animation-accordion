@@ -1,7 +1,7 @@
 export default [
   {
-    bg: "#cb7600",
-    color: "#19242f",
+    bg: "#D50000",
+    color: "#f5f5f5",
     category: "Pesquisa de Preços",
     subCategories: [
       "Ult. Rec: 01/07/2020 00:00:00",
@@ -11,7 +11,7 @@ export default [
     ],
   },
   {
-    bg: "#feeb64",
+    bg: "#ffc400",
     color: "#19242f",
     category: "Compras Mobile",
     subCategories: [
@@ -22,7 +22,8 @@ export default [
     ],
   },
   {
-    bg: "#d99e29",
+    bg: "#FF6D00",
+
     color: "#19242f",
     category: "Pendências Estoque",
     subCategories: [
@@ -33,9 +34,9 @@ export default [
     ],
   },
   {
-    bg: "#f0dcb1",
+    bg: "#B388FF",
     color: "#19242f",
-    category: "Auditoria",
+    category: "Módulo 4",
     subCategories: [
       "Ult. Rec: 01/07/2020 00:00:00",
       "Ult. Envio: 01/07/2020 00:00:00",
@@ -44,9 +45,9 @@ export default [
     ],
   },
   {
-    bg: "#ffc446",
+    bg: "#d3ff88",
     color: "#19242f",
-    category: "Separação",
+    category: "Módulo 5",
     subCategories: [
       "Ult. Rec: 01/07/2020 00:00:00",
       "Ult. Envio: 01/07/2020 00:00:00",
@@ -55,9 +56,9 @@ export default [
     ],
   },
   {
-    bg: "#fff9c8",
+    bg: "#88d3ff",
     color: "#19242f",
-    category: "Recebimento",
+    category: "Módulo 6",
     subCategories: [
       "Ult. Rec: 01/07/2020 00:00:00",
       "Ult. Envio: 01/07/2020 00:00:00",
